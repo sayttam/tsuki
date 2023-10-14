@@ -1,0 +1,112 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: rgb(253, 214, 214);
+}
+
+main {
+  padding: 0 30px;
+}
+main h1 {
+  padding-top: 20px;
+  text-align: center;
+  color: #2e2e2e;
+  font-family: "Courier New", Courier, monospace;
+  text-shadow: 2px 2px pink;
+}
+main h2 {
+  padding-top: 20px;
+  text-align: center;
+  color: #2e2e2e;
+  font-family: "Courier New", Courier, monospace;
+  text-shadow: 2px 2px pink;
+  font-size: 30px;
+}
+
+header {
+  text-align: center;
+  background-color: black;
+}
+header img {
+  height: 250px;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding-left: 10px;
+  background-image: url(https://img.freepik.com/free-vector/vibrant-pink-watercolor-painting-background_53876-58931.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50px;
+  padding: 0 30px;
+  padding-top: 20px;
+}
+.encabezado a {
+  padding: 0 15px;
+  text-decoration: none;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  transition: 300ms;
+}
+.encabezado a:visited {
+  color: #2e2e2e;
+}
+.encabezado a:active {
+  color: black;
+}
+.encabezado a:hover {
+  color: rgb(103, 0, 70);
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  font-size: 28px;
+}
+
+.cajaPrincipal {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  border: 5px rgba(46, 46, 46, 0.2901960784) solid;
+  border-radius: 30px;
+  margin: 20px 0;
+  overflow: hidden;
+  padding-right: 10px;
+}
+.cajaPrincipal p {
+  font-size: larger;
+  padding-top: 50px;
+  padding-left: 15px;
+}
+
+.columna {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: black;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.fila {
+  margin-top: 10px;
+  color: pink;
+}
+.fila a {
+  margin: 0 10px;
+  text-decoration: none;
+}
+.fila a:visited {
+  color: pink;
+}
+.fila a:hover {
+  color: white;
+}
+.fila ul {
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+}
+
+/*# sourceMappingURL=styles.css.map */
