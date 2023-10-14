@@ -1,3 +1,7 @@
+@import url('https://fonts.cdnfonts.com/css/honey-script');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.cdnfonts.com/css/signika');
+
 * {
     padding: 0;
     margin: 0;
@@ -10,20 +14,23 @@ body {
 main {
     padding: 0 30px;
     h1 {
-        padding-top: 20px;
+        padding-top: 30px;
         text-align: center;
         color:#2e2e2e;
-        font-family:'Courier New', Courier, monospace;
+        font-family:'Honey Script', sans-serif;
         text-shadow: 2px 2px pink;
+        text-transform: uppercase;
+        font-size: 50px;
     }
 
     h2 {
-        padding-top: 20px;
+        padding-top: 30px;
         text-align: center;
         color:#2e2e2e;
-        font-family:'Courier New', Courier, monospace;
+        font-family:'Honey Script', sans-serif;
         text-shadow: 2px 2px pink;
-        font-size: 30px;
+        font-size: 35px;
+        text-transform: uppercase;
     }
 }
 
@@ -53,7 +60,7 @@ header {
         text-decoration: none;
         font-size: 25px;
         font-weight: bold;
-        font-family:'Courier New', Courier, monospace;
+        font-family: 'Signika', sans-serif;
         transition: 300ms;
         &:visited {
             color: #2e2e2e;
@@ -85,6 +92,7 @@ header {
         font-size: larger;
         padding-top: 50px;
         padding-left: 15px;
+        font-family: 'Signika', sans-serif;
     }
 }
 
@@ -93,6 +101,10 @@ header {
     grid-template-columns: 1fr;
     background-color: black;
     font-family: 'Courier New', Courier, monospace;
+
+    ul {
+        list-style: none;
+    }
 }
 
 .fila {
@@ -115,4 +127,8 @@ header {
         justify-content: center;
         padding: 0 30px;
     }
+}
+
+.contenedor {
+    height: 500px;
 }
