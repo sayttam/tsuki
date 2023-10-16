@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link href="https://fonts.cdnfonts.com/css/signika" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <img src="../img/tsuki.png" alt="">
@@ -18,7 +20,58 @@
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
     </header>
-    <main class="contenedor">
+    <main>
+        <form class="turnos" action="">
+            <h1>Solicitá tu turno</h1>
+            <div class="contenedorTurnos">
+                <div>
+                    <label for="nombreCan">Nombre del can: </label>
+                    <input type="text" name="nombreCan" id="nombreCan" class="nombreCan" required>
+                </div>
+                <div>
+                    <label for="nombreHumano" class="labelHumano">Nombre del propietario: </label>
+                    <input type="text" name="nombreHumano" id="nombreHumano" class="nombreHumano" required>
+                </div>
+                <div>
+                    <label for="servicio">Servicio</label>
+                    <select name="servicio" id="servicio">
+                        <option value="Baño">Baño</option>
+                        <option value="Baño y corte">Baño y corte</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="fechaTurno">Ingresa la fecha :</label>
+                    <input type="date" name="fechaTurno" id="fechaTurno" required>
+                </div>
+                <div>
+                    <label for="horario">Horario</label>
+                    <select name="horario" id="horario">
+                        <option value="maniana">Mañana</option>
+                        <option value="tarde">Tarde</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="hora">Hora</label>
+                    <select name="hora" id="hora">
+                        <option value="9" class="maniana">09:00</option>
+                        <option value="10" class="maniana">10:00</option>
+                        <option value="11" class="maniana">11:00</option>
+                        <option value="12" class="maniana">12:00</option>
+                        <option value="16" class="tarde">16:00</option>
+                        <option value="17" class="tarde">17:00</option>
+                        <option value="18" class="tarde">18:00</option>
+                        <option value="19" class="tarde">19:00</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <button>Enviar</button>
+
+            <script src="../js/main.js"></script>
+            <script src="../js/enviarTurno.js"></script>
+        </form>
+
     </main>
     <footer>
         <div class="columna">
@@ -41,14 +94,16 @@
                     <li><a href="">Facebook</a></li>
                     <li><a href="">Instagram</a></li>
                     <li><a href="">YouTube</a></li>
-                    <li><a href="">X</a></li>
+                    <li><a href="">Whatsapp</a></li>
                 </ul>
             </div>
 
             <div class="fila">
-                <p style="text-align: center;">&copy; Joel Bustos @ Tsuki Peluquería y guardería canina. 2023 Córdoba, Argentina</p>
+                <p style="text-align: center;">&copy; Joel Bustos @ Tsuki Peluquería y guardería canina. 2023 Córdoba,
+                    Argentina</p>
             </div>
         </div>
     </footer>
 </body>
+
 </html>
