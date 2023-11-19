@@ -227,6 +227,32 @@ header img {
   height: 500px;
 }
 
+.contenedorPetShop {
+  height: fit-content;
+}
+.contenedorPetShop section {
+  display: flex;
+}
+.contenedorPetShop section div {
+  width: 500px;
+}
+.contenedorPetShop table {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-collapse: separate;
+}
+.contenedorPetShop table td,
+.contenedorPetShop table th {
+  border: 2px salmon solid;
+  padding: 0 10px;
+  text-align: center;
+}
+.contenedorPetShop table td button,
+.contenedorPetShop table th button {
+  background-color: black;
+  color: pink;
+}
+
 .contenedorTurnos {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -295,6 +321,11 @@ header img {
 .turnos button:hover {
   background-color: rgb(201, 124, 155);
   transform: scale(1.1);
+}
+
+.formGuarderia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 /*# sourceMappingURL=styles.css.map */
