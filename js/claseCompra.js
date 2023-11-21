@@ -3,13 +3,15 @@ class Compra {
         this.carritoPS = carritoPetShop
     }
     calcularImporte() {
-        if (this.carritoPS.length > 0) {
-            if (this.carritoPS.length > 4) {
+        let cantidadItems = this.carritoPS.reduce((acum, producto) => acum + producto.cantidad, 0)
+        if (cantidadItems > 0) {
+
+            if (cantidadItems > 4) {
                 alert("Por la compra de 5 o más productos, se descontara un 50% del precio de la prenda de menor valor")
                 ordenarCarrito(this.carritoPS)
-                this.carritoPS[0].importe = this.carritoPS[0].importe * 0.5
+                this.carritoPS[0].importe = this.carritoPS[0].importe - ((this.carritoPS[0].importe / this.carritoPS[0].cantidad) / 2)
             }
-            return this.carritoPS.reduce((acum, producto) => acum + producto.importe, 0)
+            return this.carritoPS.reduce((acum, producto) => acum + (producto.importe * producto.cantidad), 0)
         }
     }
 }

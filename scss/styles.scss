@@ -210,6 +210,68 @@ header {
 
         border-collapse: separate;
     }
+}
+
+.petshopCarrito {
+    margin: 0;
+    margin-right: 80px;
+    table {
+        margin: 0;
+        padding: 0;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: black 2px solid;
+
+        td {
+            border: none;
+            padding: 2px 2px;
+        }
+        th {
+            border: none;
+            padding: 0 10px;
+            text-align: center;
+
+            button {
+                background-color: black;
+                color: pink;
+            }
+        }
+
+        border-collapse:collapse;   
+    }
+
+}
+
+.petshopProductos {
+    display: flex
+}
+
+.petshopCompra {
+    text-align: center;
+    table {
+        position: relative;
+        left: 38%;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        border: black 2px solid;
+
+        td {
+            border: black 2px solid;
+            padding: 2px 2px;
+        }
+        th {
+            border: none;
+            padding: 0 10px;
+            text-align: center;
+
+            button {
+                background-color: black;
+                color: pink;
+            }
+        }
+
+        border-collapse:collapse;   
+    }
 
 }
 
