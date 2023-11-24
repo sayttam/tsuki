@@ -75,11 +75,11 @@ ${carritoPS.map(prodCarrito => `
     `
     contenedorProductos.appendChild(productosTabla)
     contenedorCarritoPS.appendChild(productosCarritoPS)
-    activarClickEnBotones()
+    activarClickAgregar()
 }
 
-function actualizarListaProductosCarrito() {
-    const productosCarritoPS = document.querySelector("div.petshopCarrito table tbody");
+function actualizarProductosCarrito() {
+    const productosCarritoPS = document.querySelector("div.petshopCarrito table tbody")
     productosCarritoPS.innerHTML = carritoPS.map(prodCarrito => `
         <tr>
             <td>${prodCarrito.nombre}</td>
@@ -88,43 +88,52 @@ function actualizarListaProductosCarrito() {
             <td>${prodCarrito.cantidad * prodCarrito.importe}</td>
             <td><button id="${prodCarrito.id}" class="quitarDelCarrito" >Quitar</button></td>
         </tr>
-    `).join('');
+    `).join('')
+    activarClickQuitar()
 }
 
 function agregarAlCarrito(id, cantidad) {
-    const productoSeleccionado = producto.find((producto) => producto.id === id);
-    productoSeleccionado.stock -= cantidad;
-    const carritoConCantidad = { ...productoSeleccionado, cantidad };
-    carritoPS.push(carritoConCantidad);
-    localStorage.setItem("carritoPS", JSON.stringify(carritoPS));
-    actualizarListaProductosCarrito();
+    if (carritoPS.length === 0) {
+        const sinProductos = document.querySelector(".sinProductos")
+        sinProductos.innerHTML = ``
+    }
+    const productoSeleccionado = producto.find((producto) => producto.id === id)
+    productoSeleccionado.stock -= cantidad
+    const carritoConCantidad = { ...productoSeleccionado, cantidad }
+    carritoPS.push(carritoConCantidad)
+    localStorage.setItem("carritoPS", JSON.stringify(carritoPS))
+    actualizarProductosCarrito()
+
 }
 
-function activarClickEnBotones() {
-    const botonesAgregar = document.querySelectorAll(".agregarAlCarrito");
-    const botonesQuitar = document.querySelectorAll(".quitarDelCarrito");
-
+function activarClickAgregar() {
+    const botonesAgregar = document.querySelectorAll(".agregarAlCarrito")
     botonesAgregar.forEach((boton) => {
         boton.addEventListener("click", (e) => {
-            const id = parseInt(e.target.id);
-            const stringInput = ("cantidadId" + String(id));
-            const cantidadInput = document.getElementById(stringInput);
-            const cantidad = parseInt(cantidadInput.value);
-            agregarAlCarrito(id, cantidad);
-        });
-    });
+            const id = parseInt(e.target.id)
+            const stringInput = ("cantidadId" + String(id))
+            const cantidadInput = document.getElementById(stringInput)
+            const cantidad = parseInt(cantidadInput.value)
+            agregarAlCarrito(id, cantidad)
+        })
+    })
+}
 
+function activarClickQuitar() {
+    const botonesQuitar = document.querySelectorAll(".quitarDelCarrito")
     botonesQuitar.forEach((boton) => {
         boton.addEventListener("click", (e) => {
-            const id = parseInt(e.target.id);
-            quitarDelCarrito(id);
-        });
-    });
+            const id = parseInt(e.target.id)
+            quitarDelCarrito(id)
+        })
+    })
 }
+
 
 
 window.onload = function () {
     mostrarProductos()
+    activarClickQuitar()
 }
 
 function buscarProducto(id) {
@@ -138,6 +147,15 @@ function limpiarCarrito() {
     }
     carritoPS.length = 0
     localStorage.removeItem("carritoPS")
+    const productosCarritoPS = document.querySelector("div.petshopCarrito table tbody")
+    productosCarritoPS.innerHTML = carritoPS.map(prodCarrito => `
+                <tr>
+                    <td>${prodCarrito.nombre}</td>
+                    <td>${prodCarrito.cantidad}</td>
+                    <td>${prodCarrito.importe}</td>
+                    <td>${prodCarrito.cantidad * prodCarrito.importe}</td>
+                </tr>
+            `).join('')
 }
 
 function obtenerIds(productos) {
@@ -149,26 +167,12 @@ function obtenerIds(productos) {
     return identificadoresLista
 }
 
-/* function corregirCarrito() {
-    let corregirCompra = confirm("Si has agregado un articulo por error puedes quitarlo. Deseas hacerlo?")
-    if (corregirCompra) {
-        carritoCorregido = quitarDelCarrito(carritoPS)
-        let quitarProducto = confirm("Deseas quitar otro producto?")
-        if (quitarProducto) {
-            carritoCorregido = quitarDelCarrito(carritoPS)
-        }
-    }
-} */
-
 function quitarDelCarrito(id) {
-    const index = carritoPS.findIndex((producto) => producto.id === id);
-    if (index > -1) {
-        const productoEliminado = carritoPS.splice(index, 1)[0];
-        console.log(`Producto eliminado: ${productoEliminado.nombre}`);
-        localStorage.setItem("carritoPS", JSON.stringify(carritoPS));
-        actualizarListaProductosCarrito();
-    } else {
-        console.log("No se encontró ningún producto con ese ID en el carrito.");
+    const idProducto = carritoPS.findIndex((producto) => producto.id === id)
+    if (idProducto > -1) {
+        const productoEliminado = carritoPS.splice(idProducto, 1)[0]
+        localStorage.setItem("carritoPS", JSON.stringify(carritoPS))
+        actualizarProductosCarrito()
     }
 }
 
@@ -196,14 +200,13 @@ function medioDePago(importe) {
             return importe
             break
         case 3:
-            alert("Datos para el pago por transferencia bancaria.\nCBU: 0000029000090230491021\nBanco: BruBank\nTitular: Marisa Rodriguez\nEnviar comprobante por Whatsapp a +541155197866")
             return importe
             break
     }
 }
 
 function mostrarCompra(importe) {
-    let importePago = importe 
+    let importePago = importe
     const detalleCompra = document.querySelector(".petshopCompra")
     const compraProcesada = document.createElement("p")
     compraProcesada.textContent = `El detalle de la compra es:`
@@ -225,35 +228,34 @@ function mostrarCompra(importe) {
     totalCompra.textContent = `Total de la compra: ${importePago}`
     let descuentoAplicado = carritoPS[0].importe
     let prendaDescuento = carritoPS[0].nombre
-    descuento.textContent = `Se desconto un 50% ($${descuentoAplicado}) de la prenda: ${prendaDescuento}`
+    if (carritoPS.length > 0) {
+        descuento.textContent = `
+            Se desconto un 50% ($${descuentoAplicado}) de la prenda: ${prendaDescuento}
+        `
+    }
     detalleCompra.appendChild(descuento)
     detalleCompra.appendChild(totalCompra)
     descuentoAplicado = 0
     prendaDescuento = ""
+    detalleCompra.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
 }
 
 
 function comprar() {
+    if (carritoPS.length === 0) {
+        const sinProductos = document.querySelector(".sinProductos")
+        sinProductos.innerHTML = `
+        <p style="margin-top: 10px; color: red;">No hay productos en el carrito!!!</p>
+        `
+    } else {
+        const sinProductos = document.querySelector(".sinProductos")
+        sinProductos.innerHTML = ``
+    }
     const detalleCompra = document.querySelector(".petshopCompra")
     detalleCompra.innerHTML = ``
     const procesarCarrito = new Compra(carritoPS)
     let importePago = procesarCarrito.calcularImporte()
     importePago = (medioDePago(importePago)).toFixed(0)
-    if (carritoPS.length > 4) {
-        console.log("El total de la compra es: " + importePago + "\nSe aplico un descuento del 50% sobre el producto: " + carritoPS[0].nombre)
-    } else {
-        alert("El total de la compra es: " + importePago)
-        console.log("El total de la compra es: " + importePago)
-    }
     mostrarCompra(importePago)
     limpiarCarrito()
-    const productosCarritoPS = document.querySelector("div.petshopCarrito table tbody")
-    productosCarritoPS.innerHTML = carritoPS.map(prodCarrito => `
-                <tr>
-                    <td>${prodCarrito.nombre}</td>
-                    <td>${prodCarrito.cantidad}</td>
-                    <td>${prodCarrito.importe}</td>
-                    <td>${prodCarrito.cantidad * prodCarrito.importe}</td>
-                </tr>
-            `).join('')
 }

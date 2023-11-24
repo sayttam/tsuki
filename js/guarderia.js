@@ -24,22 +24,23 @@ function calcularPresupuesto() {
     let nombreCanino = document.getElementById('nombreCanino').value
 
     if (nombreCanino === "") {
-        alert("Debe ingresar el nombre del canino")
+        const sinNombre = document.querySelector(".sinNombre")
+        sinNombre.innerHTML = `<p style="color:red;font-weight:bolder;">Debe ingresar un nombre!</p>`
     } else {
         banderaNombre = true
+        const sinNombre = document.querySelector(".sinNombre")
+        sinNombre.innerHTML = ``
     }
 
     let tamaño = parseInt(document.getElementById('tamaño').value)
 
     if (tamaño < 1 || tamaño > 3 || isNaN(tamaño)) {
-        console.warn("Ingrese un número de tamaño válido")
     } else {
         if (tamaño === 2) {
             precioPorDia *= 1.25
         } else if (tamaño === 3) {
             precioPorDia *= 1.5
         }
-        console.log("Tamaño seleccionado")
         banderaTamaño = true
     }
 
@@ -53,8 +54,6 @@ function calcularPresupuesto() {
     } else if (dias >= 20 && dias < 9999) {
         precioPorDia *= 0.85
         banderaDias = true
-    } else {
-        console.warn("Ingrese un número de días válido")
     }
 
     if (banderaNombre && banderaTamaño && banderaDias) {
@@ -66,21 +65,16 @@ function calcularPresupuesto() {
             switch (opcionSeleccionada) {
                 case 1:
                     costoAdicionalEspeciales = 1.1
-                    console.log("10% adicional por medicación")
                     break
                 case 2:
                     costoAdicionalEspeciales = 1.25
-                    console.log("25% adicional por discapacidad")
                     break
                 default:
                     costoAdicionalEspeciales = 1
-                    console.warn("No ha ingresado la opción correcta")
                     break
             }
 
             precioPorDia *= costoAdicionalEspeciales
-        } else {
-            console.log("Sin cuidados especiales")
         }
 
         function calcularPrecioEstadia(diasEstadia) {
@@ -90,16 +84,11 @@ function calcularPresupuesto() {
         let estadia = calcularPrecioEstadia(dias)
 
         function mostrarPrecioDia(precioTotal) {
-            console.log("El importe detallado es:")
             for (let i = 1; i <= dias; i++) {
-                console.log(i + "° día. Costo: ", parseFloat(precioTotal / dias).toFixed(2))
             }
         }
 
         mostrarPrecioDia(estadia)
-        console.log("Costo total de la estadia: ", calcularPrecioEstadia(dias))
         mostrarPresupuestoDetallado(estadia, calcularPrecioEstadia(dias))
-    } else {
-        console.error("No ha ingresado los datos correctamente para el presupuesto")
-    }
+    } 
 }

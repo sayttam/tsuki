@@ -8,6 +8,7 @@
     <title>Tsuki - Petshop</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link href="https://fonts.cdnfonts.com/css/signika" rel="stylesheet">
+    <script defer src="../js/petshop.js"></script>
     <script src="../js/claseCompra.js"></script>
 </head>
 
@@ -27,7 +28,6 @@
         <h1>Petshop</h1>
         <section class="petshopProductos contenedorPetShop">
             <div class="petshopCarrito">
-                <p>Productos en el carrito</p>
                 <div>
                     <label for="medioPago">Selecciona el medio de pago:</label>
                     <select id="medioPago" class="medioPago" required>
@@ -36,6 +36,13 @@
                         <option value="3">Transferencia</option>
                     </select>
                     <button class="comprar" onclick="comprar()">Comprar</button>
+                    <div class="parrMedioPago">
+                        <p style="color: darkgreen; text-align: center;">Por la comra de 5 o mas productos, se aplica el 50% de descuento sobre el producto de menor valor</p>
+                        <p style="font-size: 12px; text-align: center;">Debito 10% de recargo</p>
+                        <p style="font-size: 12px; text-align: center;">Credito 15% de recargo</p>
+                        <p>Productos en el carrito</p>
+                    </div>
+                    <div class="sinProductos"></div>
                 </div>
             </div>
 
@@ -76,6 +83,6 @@
     </footer>
 </body>
 
-<script src="../js/petshop.js"></script>
+
 
 </html>

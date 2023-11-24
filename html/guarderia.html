@@ -24,10 +24,10 @@
     <main class="contenedor">
         <h1>Bienvenido a nuestra guardería canina</h1>
         <div class="formGuarderia">
+            <div class="sinNombre"></div>
             <form id="guarderiaForm" class="guarderiaForm">
                 <label for="nombreCanino">Ingresa el nombre de tu canino:</label>
                 <input type="text" id="nombreCanino" required>
-
                 <label for="tamaño">Selecciona el tamaño de tu mascota:</label>
                 <select id="tamaño" required>
                     <option value="1">Pequeño</option>
@@ -46,9 +46,10 @@
                     <option value="1">Medicación</option>
                     <option value="2">Cuidados por discapacidad</option>
                 </select>
-
-                <button type="button" onclick="calcularPresupuesto()">Calcular Presupuesto</button>
             </form>
+            <p>Se hara un descuento del 10% por 10 o más días y un 15% por 20 o más días</p>
+            <p>Se aplicara un adicional del 10% por Medicacion y el 25% por Cuidados por discapacidad</p>
+            <button type="button" onclick="calcularPresupuesto()">Calcular Presupuesto</button>
         </div>
         <div id="resultadoPresupuesto"></div>
 
