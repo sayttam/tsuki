@@ -80,6 +80,7 @@
 
 body {
   background-color: rgb(253, 214, 214);
+  height: auto;
 }
 
 main {
@@ -224,7 +225,14 @@ header img {
 }
 
 .contenedor {
-  height: 500px;
+  display: block;
+  position: relative;
+  height: fit-content;
+  margin-bottom: 100px;
+}
+
+.resultadoPresupuesto {
+  height: fit-content;
 }
 
 .contenedorPetShop {
