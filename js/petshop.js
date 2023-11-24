@@ -228,7 +228,7 @@ function mostrarCompra(importe) {
     totalCompra.textContent = `Total de la compra: ${importePago}`
     let descuentoAplicado = carritoPS[0].importe
     let prendaDescuento = carritoPS[0].nombre
-    if (carritoPS.length > 0) {
+    if (carritoPS.length > 4) {
         descuento.textContent = `
             Se desconto un 50% ($${descuentoAplicado}) de la prenda: ${prendaDescuento}
         `
