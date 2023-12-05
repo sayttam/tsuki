@@ -6,22 +6,16 @@ medioPago.addEventListener("change", function () {
     medioPagoSeleccionado = parseInt(medioPago.value)
 })
 
-const producto = [{ id: 1, nombre: 'Buzo Polar Piel Estampado T1', importe: 4000, categoria: 'Ropa', stock: 10 },
-{ id: 2, nombre: 'Buzo Polar Piel Estampado T2', importe: 4500, categoria: 'Ropa', stock: 10 },
-{ id: 3, nombre: 'Buzo Polar Piel Estampado T3', importe: 5000, categoria: 'Ropa', stock: 10 },
-{ id: 4, nombre: 'Buzo Polar Piel Estampado T4', importe: 5500, categoria: 'Ropa', stock: 10 },
-{ id: 5, nombre: 'Buzo de Friza T1', importe: 3500, categoria: 'Ropa', stock: 10 },
-{ id: 6, nombre: 'Buzo de Friza T2', importe: 4000, categoria: 'Ropa', stock: 10 },
-{ id: 7, nombre: 'Buzo de Friza T3', importe: 4500, categoria: 'Ropa', stock: 10 },
-{ id: 8, nombre: 'Buzo de Friza T4', importe: 5000, categoria: 'Ropa', stock: 10 },
-{ id: 9, nombre: 'Muñeco de tela', importe: 2500, categoria: 'Juguetes', stock: 10 },
-{ id: 10, nombre: 'Hueso de soga', importe: 2000, categoria: 'Juguetes', stock: 10 },
-{ id: 11, nombre: 'Oreja de cerdo', importe: 1000, categoria: 'Comida', stock: 10 },
-{ id: 12, nombre: 'Balanceado Royal Canin 10kg', importe: 20000, categoria: 'Comida', stock: 10 },
-{ id: 13, nombre: 'Balanceado Royal Canin 20kg', importe: 35000, categoria: 'Comida', stock: 10 },
-{ id: 14, nombre: 'Balanceado Nutribon Plus 20kg', importe: 20000, categoria: 'Comida', stock: 10 },
-{ id: 15, nombre: 'Balanceado Weight Care 20kg', importe: 40000, categoria: 'Comida', stock: 10 }]
+const URL = '../js/productos.json'
 
+const producto = []
+
+function obtenerProductos() {
+    fetch(URL)
+    .then((response)=> response.json())
+    .then ((data)=> producto.push(...data))
+    .then(()=> mostrarProductos())
+}
 
 function mostrarProductos() {
     const contenedorProductos = document.querySelector("section.petshopProductos")
@@ -132,7 +126,7 @@ function activarClickQuitar() {
 
 
 window.onload = function () {
-    mostrarProductos()
+    obtenerProductos()
     activarClickQuitar()
 }
 
