@@ -7,7 +7,9 @@
     <title>Tsuki - Guardería canina</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link href="https://fonts.cdnfonts.com/css/signika" rel="stylesheet">
+    <script src="../js/hora.js"></script>
     <script src="../js/guarderia.js"></script>
+
 </head>
 
 <body>
@@ -22,6 +24,7 @@
         </ul>
     </header>
     <main class="contenedor">
+        <div id="mostrarHora"></div>
         <h1>Bienvenido a nuestra guardería canina</h1>
         <div class="formGuarderia">
             <div class="sinNombre"></div>
@@ -49,7 +52,7 @@
             </form>
             <p>Se hara un descuento del 10% por 10 o más días y un 15% por 20 o más días</p>
             <p>Se aplicara un adicional del 10% por Medicacion y el 25% por Cuidados por discapacidad</p>
-            <button type="button" onclick="calcularPresupuesto()">Calcular Presupuesto</button>
+            <button type="button" onclick="calcularPresupuesto()" class="agregarAlCarrito">Calcular Presupuesto</button>
         </div>
         <div id="resultadoPresupuesto" class="resultadoPresupuesto"></div>
 
@@ -64,6 +67,7 @@
                     <li><a href="guarderia.html">Guardería &#9825;</a></li>
                     <li><a href="petshop.html">Petshop &#9825;</a></li>
                     <li><a href="contacto.html">Contacto &#9825;</a></li>
+                </ul>
             </div>
 
             <div class="fila">
@@ -85,6 +89,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

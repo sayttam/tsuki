@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: rgb(253, 214, 214);
+    background-color: rgb(253, 214, 214) !important;
     height: auto;
 }
 
@@ -25,10 +25,10 @@ main {
         padding-top: 30px;
         text-align: center;
         color: #2e2e2e;
-        font-family: 'Honey Script', sans-serif;
+        font-family: 'Honey Script', sans-serif !important;
         text-shadow: 2px 2px pink;
         text-transform: uppercase;
-        font-size: 50px;
+        font-size: 50px !important;
         animation-name: animacionTitulo;
         animation-duration: 10s;
         animation-iteration-count: infinite;
@@ -39,7 +39,7 @@ main {
         padding-top: 30px;
         text-align: center;
         color: #2e2e2e;
-        font-family: 'Honey Script', sans-serif;
+        font-family: 'Honey Script', sans-serif ;
         text-shadow: 2px 2px pink;
         font-size: 35px;
         text-transform: uppercase;
@@ -54,10 +54,13 @@ header {
     background-color: black;
 
     img {
-        height: 250px;
+        height: 200px;
     }
 }
 
+.encabezadoPetshop {
+    height: 70px !important;
+}
 
 .encabezado {
     display: flex;
@@ -221,6 +224,27 @@ header {
     }
 }
 
+button {
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+}
+
+.productosCarritoDialog {
+    margin-top: 20px;
+}
+
+.agregarAlCarrito {
+    background-color: black !important;
+    color: pink !important;
+    transition: 700ms !important;
+
+    &:hover {
+        background-color: pink !important;
+        color: black !important;
+        transform: scale(1.05) !important;
+    }
+}
+
 .petshopCarrito {
     margin: 0;
     margin-right: 80px;
@@ -255,7 +279,7 @@ header {
 
 .petshopProductos {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 .petshopCompra {
@@ -279,6 +303,12 @@ header {
             button {
                 background-color: black;
                 color: pink;
+                transition: 500ms;
+
+                &:hover {
+                    color: white;
+                    background-color: pink;
+                }
             }
         }
 
@@ -398,5 +428,73 @@ header {
     select {
         text-align: center;
         width: 305px;
+    }
+}
+
+.carritoLleno {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 1;
+
+    button {
+        border-radius: 10px;
+        background-color: black;
+        animation-name: animacionCarrito;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        border-radius: 10px;
+    }
+
+    img {
+        height: 35px;
+    }
+}
+
+.carritoVacio {
+    position: fixed;
+    right: 15px;
+    bottom: 15px;
+    z-index: 1;
+
+    img {
+        height: 35px;
+    }
+}
+
+.mostrarCarrito {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border: 1px solid #000;
+background-color: #fff;
+padding: 20px;
+z-index: 1000;
+
+}
+
+.botonCerrar {
+    position: absolute;
+    right: 5px ;
+    top: 1px;
+    width: 20px;
+}
+
+.hora {
+    text-align: end;
+    color: black;
+    animation-name: animacionHeader;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.cardProductos {
+    text-align: center;
+    width: 300px;
+    height: 320px !important;
+    img {
+        position: relative;
+        left: 32%;
     }
 }

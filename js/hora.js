@@ -11,8 +11,9 @@ function obtenerHora () {
 
 function mostrarHora() {
     const divHora = document.querySelector("#mostrarHora")
+    let hora = horaTsuki.datetime
     divHora.innerHTML = `
-    <h3>${horaTsuki.datetime}</h3>
+    <h3 class="hora">${hora.slice(11, -13)}</h3>
     `
 }
 

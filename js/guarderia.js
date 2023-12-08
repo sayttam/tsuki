@@ -1,16 +1,18 @@
 let precioPorDia = 2000
 let dias
 
+
+
 function mostrarPresupuestoDetallado(estadia, costoTotal) {
-    let resultadoPresupuesto = document.getElementById("resultadoPresupuesto")
-    let detallePresupuesto = document.createElement("div")
-    detallePresupuesto.innerHTML = "<h3>Presupuesto Detallado</h3>"
-    detallePresupuesto.innerHTML += "<p>Costo total de la estadia: $" + costoTotal.toFixed(2) + "</p>"
+    let stringDetalle = ""
     for (let i = 1; i <= dias; i++) {
-        detallePresupuesto.innerHTML += "<p>" + i + "° día. Costo: $" + parseFloat(estadia / dias).toFixed(2) + "</p>"
+        stringDetalle += "<p>" + i + "° día. Costo: $" + parseFloat(estadia / dias).toFixed(2) + "</p><br>"
     }
-    resultadoPresupuesto.innerHTML = ""
-    resultadoPresupuesto.appendChild(detallePresupuesto)
+    Swal.fire({
+        title: "<h3>Presupuesto Detallado</h3>",
+        text: "El costo total de la estadia es: " + costoTotal.toFixed(2),
+        footer: stringDetalle
+    })
 }
 
 function calcularPresupuesto() {

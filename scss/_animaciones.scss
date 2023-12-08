@@ -19,3 +19,11 @@
     50%  {color:rgb(115, 0, 255); left:200px; top:200px;}
     100%  {color:rgb(192, 84, 169); left:0px; top:200px;}
   }
+
+  @keyframes animacionCarrito {
+    0%   {background-color:rgb(255, 0, 64); left:0px; top:0px;}
+    25%  {background-color:rgb(255, 119, 0); left:200px; top:0px;}
+    50%  {background-color:rgb(115, 0, 255); left:200px; top:200px;}
+    75%  {background-color:rgb(192, 84, 169); left:0px; top:200px;}
+    100% {background-color:red; left:0px; top:0px;}
+  }
