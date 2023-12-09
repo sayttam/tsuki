@@ -2,6 +2,7 @@ const carritoPS = JSON.parse(localStorage.getItem("carritoPS")) || []
 
 let medioPagoSeleccionado = 0
 let validacionMedioPago = false
+let recargo = 1
 
 const URL = '../js/productos.json'
 
@@ -180,8 +181,6 @@ function activarClickQuitar() {
     })
 }
 
-
-
 window.onload = function () {
     obtenerProductos()
     carritoPetShop()
@@ -220,7 +219,6 @@ function quitarDelCarrito(id) {
     }
 }
 
-
 function ordenarCarrito() {
     carritoPS.sort((a, b) => {
         if (a.importe > b.importe) {
@@ -233,39 +231,44 @@ function ordenarCarrito() {
     })
 }
 
-function medioDePago(importe) {
+function medioDePago() {
     switch (medioPagoSeleccionado) {
         case 0:
             validacionMedioPago = false
-            return importe
             break
         case 1:
-            importe *= 1.1
+            recargo = 1.1
             validacionMedioPago = true
-            return importe
             break
         case 2:
-            importe *= 1.15
+            recargo = 1.15
             validacionMedioPago = true
-            return importe
             break
         case 3:
+            recargo = 1
             validacionMedioPago = true
-            return importe
             break
     }
 }
 
+function calcularRecargo(importe) {
+    return (importe * recargo).toFixed(2)
+}
+
+function restaurarValores() {
+    validacionMedioPago = false
+    medioPagoSeleccionado = 0
+    recargo = 1
+}
 
 function comprar() {
     cerrarModal()
+    medioDePago()
     const procesarCarrito = new Compra(carritoPS)
-    let importePago = procesarCarrito.calcularImporte()
-    importePago = medioDePago(importePago).toFixed(0)
-    const listaProductos = carritoPS.map(prod => `${prod.cantidad} x ${prod.nombre}`).join('<br>')
     if (validacionMedioPago) {
-        validacionMedioPago = false
-        medioPagoSeleccionado = 0
+        let importePago = procesarCarrito.calcularImporte()
+        importePago = calcularRecargo(importePago)
+        restaurarValores()
         Swal.fire({
             title: "Confirma el procesamiento de la compra:",
             text: "Una vez hecha la compra no se puede modificar",
@@ -276,6 +279,7 @@ function comprar() {
             confirmButtonText: "Sí, comprar!",
         }).then((result) => {
             if (result.isConfirmed) {
+                const listaProductos = carritoPS.map(prod => `${prod.cantidad} x ${prod.nombre}`).join('<br>')
                 const cantidadProductos = carritoPS.reduce((a, p) => a + p.cantidad, 0)
                 let stringImportePago = importePago
                 if (cantidadProductos > 4) {
@@ -283,7 +287,7 @@ function comprar() {
                 }
                 Swal.fire({
                     title: "Éxito!",
-                    text: "El importe total es: " + stringImportePago,
+                    text: "El importe total es: $" + stringImportePago,
                     icon: "success",
                     footer: `
                 <div><p>Su compra ha sido procesada correctamente, recibirá los productos en el transcurso de 5 días hábiles.</p></div>

@@ -17,4 +17,4 @@ function mostrarHora() {
     `
 }
 
-setInterval(obtenerHora, 1000)
+// setInterval(obtenerHora, 1000)

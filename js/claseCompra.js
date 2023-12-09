@@ -2,6 +2,7 @@ class Compra {
     constructor(carritoPetShop) {
         this.carritoPS = carritoPetShop
     }
+
     calcularImporte() {
         let cantidadItems = this.carritoPS.reduce((acum, producto) => acum + producto.cantidad, 0)
         if (cantidadItems > 0) {
